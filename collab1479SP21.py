@@ -39,7 +39,7 @@ def main():
     jumpTable['12'] = stub                # Seaman - call to function goes here
     jumpTable['13'] = stub                # Silva - call to function goes here
     jumpTable['14'] = stub                # Simmons - call to function goes here
-    jumpTable['15'] = stub                # Smith, C - call to function goes here
+    jumpTable['15'] = smithCFunction      # Smith, C - call to function goes here
     jumpTable['16'] = stub                # Smith, J - call to function goes here
     jumpTable['17'] = stub                # Stout - call to function goes here
     jumpTable['18'] = stub                # Syed - call to function goes here
@@ -113,7 +113,35 @@ def showMenu():
 #  
 # FunctionName:  lastnameFunction(your parameters)
 # *****************************************************************************************
-
+def smithCFunction():
+    print()
+    print()
+    
+    print("Random password generator.\n")
+    while True:
+        print("Enter length of password: \n")
+        try:
+            length = int(input(">>> "))
+            break
+        except ValueError:
+            print("\n***Please only enter numerical values***\n")
+    
+    passwordGen(length)
+    input("Press ENTER to continue >>> ")
+    
+def passwordGen(length):
+    import random
+    
+    password = ''
+    
+    for i in range(int(length)):
+        letter = chr(random.randint(60, 126))
+        password += letter
+            
+    print("\nYour", int(length), "digit password: ", password)       
+    print()
+    print()
+    
 # *****************************************************************************************
 # FUNCTION:         stub (default for menu)
 # DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
